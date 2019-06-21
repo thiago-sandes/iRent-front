@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".RecuperarSenha">
 
     <TextView
             android:layout_width="match_parent"
@@ -24,7 +24,8 @@
             android:textColor="#000000"/>
     <ImageView
             android:layout_width="0dp"
-            android:layout_height="80dp" app:srcCompat="@drawable/folder"
+            android:layout_height="80dp"
+            app:srcCompat="@drawable/folder"
             android:id="@+id/imageViewRecuperarSenha"
             app:layout_constraintTop_toBottomOf="@+id/textViewRecuperarSenha"
             android:layout_marginTop="16dp"
@@ -32,7 +33,8 @@
             android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
-            android:contentDescription="@string/imagem_recuperar_senha" android:layout_marginBottom="80dp"
+            android:contentDescription="@string/imagem_recuperar_senha"
+            android:layout_marginBottom="80dp"
             app:layout_constraintBottom_toTopOf="@+id/textEmail"/>
 
     <EditText

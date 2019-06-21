@@ -7,4 +7,10 @@
         cadastrado
     </string>
     <string name="recuperar">Recuperar</string>
+    <string name="eu_quero">Eu quero</string>
+    <string name="buscar">Buscar</string>
+    <string name="criar_oferta">Criar Oferta</string>
+    <string name="cone_localiza_o">Ícone localização</string>
+    <string name="cone_casa">Ícone casa</string>
+    <string name="criar_anuncio">Criar Anúncio</string>
 </resources>
