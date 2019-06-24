@@ -13,4 +13,19 @@
     <string name="cone_localiza_o">Ícone localização</string>
     <string name="cone_casa">Ícone casa</string>
     <string name="criar_anuncio">Criar Anúncio</string>
+    <string name="hint_view_cadastro">Cadastro</string>
+    <string name="hint_edit_nome">Nome</string>
+    <string name="hint_sua_senha">Sua senha</string>
+    <string name="hint_edit_email">Email</string>
+    <string name="hint_edit_telefone">Telefone</string>
+    <string name="hint_edit_usuario">Usuário</string>
+    <string name="hint_edit_senha">Senha</string>
+    <string name="hint_edit_confirmar_senha">Confirmar Senha</string>
+    <string name="hint_btn_cadastrar">Cadastrar</string>
+    <string name="hint_view_sexo">Sexo</string>
+    <string name="hint_radio_feminino">Feminino</string>
+    <string name="hint_radio_masculino">Masculino</string>
+    <string name="hint_check_termos">Termos de Aceitação</string>
+    <string name="erro_campo_obrigatorio">Campo obrigatório!</string>
+    <string name="erro_confirmar_senha">Senha não confere!</string>
 </resources>

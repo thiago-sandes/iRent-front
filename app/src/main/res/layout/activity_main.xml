@@ -1,75 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical" android:background="#1c92d2">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:orientation="vertical"
+                                                   android:background="#FAFAFA">
 
-
-    <TextView
-            android:text="iRent"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/logoText" android:textAlignment="center"
-            android:textSize="30dp"
-            style="bold" android:textStyle="bold" android:layout_marginTop="50dp" android:textColor="#000000"/>
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="122dp"
-            android:src="@drawable/logo"
-            android:id="@+id/imageView" android:layout_marginTop="8dp"/>
-    <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/emailText"
-            android:hint="Seu e-mail"
-            android:layout_marginTop="65dp"
-            android:drawableLeft="@drawable/ic_action_email" android:gravity="center_horizontal"
-            android:layout_marginLeft="100dp"/>
-    <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/passText"
-            android:hint="Sua senha"
-            android:layout_marginTop="30dp"
-            android:drawableLeft="@drawable/ic_action_password" android:gravity="center"
-            android:layout_marginLeft="100dp"/>
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView2">
 
-    <Button
-            android:id="@+id/enterButton"
-            android:text="ENTRAR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:layout_marginLeft="160dp"
-            android:background="#708090"
-            android:padding="10dp"
-            android:textColor="#FFFFFF"
-            android:onClick="entrar"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <TextView
-                android:text="Cadastrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/registerText"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:textSize="17dp"/>
-        <TextView
-                android:text="Recuperar senha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/retrieveText"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:textSize="17dp"/>
-    </LinearLayout>
-</LinearLayout>
+            <TextView
+                    android:text="@string/hint_view_cadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_cadastro"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="40dp"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/hint_view_cadastro"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/voltar"
+                    android:id="@+id/img_view_voltar"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="-35dp"/>
+
+            <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="30dp"
+                    />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/edit_nome"
+                    android:hint="@string/hint_edit_nome">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/input_nome"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/edit_email"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_edit_email"
+                    android:layout_marginTop="20dp"
+                    />
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:id="@+id/edit_telefone"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/hint_edit_telefone"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/edit_usuario"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_edit_usuario">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/input_usuario"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/edit_senha"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_edit_senha"
+                    android:layout_marginTop="20dp"
+                    />
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/edit_confirmar_senha"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_edit_confirmar_senha"/>
+
+            <TextView
+                    android:text="@string/hint_view_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_sexo"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/hint_view_sexo"/>
+
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/radio_group_sexo">
+
+                <RadioButton
+                        android:text="@string/hint_radio_masculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radio_masculino"
+                        android:layout_weight="1"
+                        android:hint="@string/hint_radio_masculino"
+                        android:layout_marginLeft="20dp"
+                        android:checked="true"/>
+
+                <RadioButton
+                        android:text="@string/hint_radio_feminino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radio_feminino"
+                        android:layout_weight="1"
+                        android:hint="@string/hint_radio_feminino"
+                        android:layout_marginLeft="180dp"
+                        android:layout_marginTop="-32dp"/>
+            </RadioGroup>
+
+            <CheckBox
+                    android:text="@string/hint_check_termos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkBox"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_check_termos"/>
+
+            <Button
+                    android:text="@string/hint_btn_cadastrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_cadastrar"
+                    android:hint="@string/hint_btn_cadastrar"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:onClick="cadastrar"
+                    android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

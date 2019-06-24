@@ -1,35 +1,68 @@
 package praticas.irent
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
+import praticas.irent.extension.doAfterTextChanged
+import praticas.irent.extension.isEmail
 import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide();
         setContentView(R.layout.activity_main)
 
-        retrieveText.setOnClickListener {
-            startActivity<RecuperarSenha>()
-        }
-        enterButton.setOnClickListener {
-            startActivity<Inicial>()
+        edit_email.doAfterTextChanged {
+            validarEmail(it)
         }
     }
 
-    private fun entrar() {
-        val email: EditText = findViewById(R.id.emailText)
-        val senha: EditText = findViewById(R.id.passText)
-        val sb = StringBuilder()
-        sb.append(email).append(" ").append(senha)
-        val str = sb.toString()
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+    fun validarEmail(it: String) = it.isEmail().also {
+        if (!it) edit_email.error = "Email inválido"
+    }
+
+    fun cadastrar(view : View){
+        val nome : String = input_nome.editableText.toString();
+        val email : String = edit_email.editableText.toString();
+        val telefone : String = edit_telefone.editableText.toString();
+        val usuario : String = input_usuario.editableText.toString();
+        val senha : String = edit_senha.editableText.toString();
+        val confirmar_senha : String = edit_confirmar_senha.editableText.toString();
+
+        val builder = AlertDialog.Builder(this);
+
+        builder.setMessage("Cadastro realizado com sucesso!");
+        builder.setPositiveButton(android.R.string.ok) { dialog, which ->
+            Toast.makeText(applicationContext,
+                android.R.string.ok, Toast.LENGTH_SHORT).show()
+        }
+
+        val alert = builder.create();
+
+        if(TextUtils.isEmpty(nome)){
+            edit_nome.error = (getString(R.string.erro_campo_obrigatorio));
+        }else if(TextUtils.isEmpty(email)){
+            edit_email.error = (getString(R.string.erro_campo_obrigatorio));
+        }else if(TextUtils.isEmpty(telefone)){
+            edit_telefone.error = (getString(R.string.erro_campo_obrigatorio));
+        }else if(TextUtils.isEmpty(usuario)){
+            edit_usuario.error = (getString(R.string.erro_campo_obrigatorio));
+        }else if(TextUtils.isEmpty(senha)){
+            edit_senha.error = (getString(R.string.erro_campo_obrigatorio));
+        }else if(senha != confirmar_senha){
+            edit_confirmar_senha.error = (getString(R.string.erro_confirmar_senha));
+        }else{
+            alert.show();
+        }
+
+
     }
 
 }
