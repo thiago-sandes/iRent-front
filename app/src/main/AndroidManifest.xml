@@ -22,7 +22,7 @@
         <activity android:name=".MainActivity"/>
 
         <!--TELA DE RECUPERAÇÂO DE SENHA-->
-        <activity android:name=".RecuperarSenha" android:label=""/>
+        <activity android:name=".RecuperarSenhaActivity" android:label=""/>
 
         <!--TELA DE LOGIN -->
         <activity android:name=".LoginActivity">

@@ -29,8 +29,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         enterButton.setOnClickListener {
-            //            startActivity<MainActivity>()
-            entrar()
+                        startActivity<MainActivity>()
+//            entrar()
         }
     }
 
