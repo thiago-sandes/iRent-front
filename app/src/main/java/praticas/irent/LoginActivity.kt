@@ -25,11 +25,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         retrieveText.setOnClickListener {
-            startActivity<RecuperarSenha>()
+            startActivity<RecuperarSenhaActivity>()
         }
 
         enterButton.setOnClickListener {
-                        startActivity<MainActivity>()
+            startActivity<MainActivity>()
 //            entrar()
         }
     }

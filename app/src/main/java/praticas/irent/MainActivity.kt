@@ -11,8 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
+        setSupportActionBar(mainToolbarMain)
 
-        imageViewMenu.setOnClickListener(){
+        mainToolbarMain.setNavigationOnClickListener {
             startActivity<MainActivity>()
         }
 
