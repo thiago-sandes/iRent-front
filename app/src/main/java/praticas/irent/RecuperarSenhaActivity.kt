@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_recuperar_senha.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
@@ -27,8 +28,9 @@ class RecuperarSenhaActivity : AppCompatActivity() {
         }
 
         buttonRecuperar.setOnClickListener {
+
             toast("Email enviado")
-//            startActivity<LoginActivity>()
+            startActivity<LoginActivity>()
         }
     }
 
