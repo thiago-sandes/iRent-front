@@ -19,7 +19,7 @@
             tools:ignore="GoogleAppIndexingWarning">
 
         <!--TELA INICIAL-->
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" android:label="Inicio"/>
 
         <!--TELA DE RECUPERAÇÂO DE SENHA-->
         <activity android:name=".RecuperarSenhaActivity" android:label=""/>
