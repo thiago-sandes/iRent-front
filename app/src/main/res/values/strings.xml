@@ -26,6 +26,24 @@
     <string name="hint_radio_feminino">Feminino</string>
     <string name="hint_radio_masculino">Masculino</string>
     <string name="hint_check_termos">Termos de Aceitação</string>
-    <string name="erro_campo_obrigatorio">Campo obrigatório!</string>
     <string name="erro_confirmar_senha">Senha não confere!</string>
+    <string name="hint_view_ofertar">Ofertar</string>
+    <string name="hint_titulo_oferta">Título</string>
+    <string name="hint_descricao_oferta">Descrição</string>
+    <string name="hint_preco_oferta">Preço (R$)</string>
+    <string name="hint_view_preferencias">Preferências</string>
+    <string name="hint_view_restricoes">Restrições</string>
+    <string name="hint_check_animal">Animais</string>
+    <string name="hint_check_meninos">Meninos</string>
+    <string name="hint_check_meninas">Meninas</string>
+    <string name="hint_check_som_alto">Som alto</string>
+    <string name="hint_btn_ofertar">Ofertar</string>
+    <string name="hint_view_fotos">Adicionar foto(s)</string>
+    <string name="hint_view_localidade">Adicionar localidade</string>
+    <string name="erro_campo_obrigatorio">Campo obrigatório!</string>
+    <string name="hint_view_inicial">Eu Quero...</string>
+    <string name="hint_btn_chamar_busca">Buscar</string>
+    <string name="hint_btn_criar_oferta">Criar Oferta</string>
+    <string name="hint_btn_criar_anuncio">Criar Anúncio</string>
+    <string name="erro_preco_negativo">Erro! Insira um valor válido!</string>
 </resources>

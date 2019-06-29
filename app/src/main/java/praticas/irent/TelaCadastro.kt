@@ -1,23 +1,21 @@
 package praticas.irent
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
+import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
-import java.lang.StringBuilder
 
-class MainActivity : AppCompatActivity() {
+class TelaCadastro : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_tela_cadastro)
 
         edit_email.doAfterTextChanged {
             validarEmail(it)
@@ -45,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val alert = builder.create();
+        val intent_inicial = Intent(this,TelaInicial::class.java);
 
         if(TextUtils.isEmpty(nome)){
             edit_nome.error = (getString(R.string.erro_campo_obrigatorio));
@@ -60,9 +59,9 @@ class MainActivity : AppCompatActivity() {
             edit_confirmar_senha.error = (getString(R.string.erro_confirmar_senha));
         }else{
             alert.show();
+            startActivity(intent_inicial)
         }
-
-
     }
 
 }
+
