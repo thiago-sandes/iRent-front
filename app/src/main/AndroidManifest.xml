@@ -2,7 +2,10 @@
 <manifest
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:dist="http://schemas.android.com/apk/distribution"
+        xmlns:tools="http://schemas.android.com/tools"
         package="praticas.irent">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module dist:instant="true"/>
 
@@ -12,12 +15,17 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name=".TelaInicial">
-        </activity>
-        <activity android:name=".CadastroOferta">
-        </activity>
-        <activity android:name=".TelaCadastro">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+
+        <!--TELA INICIAL-->
+        <activity android:name=".MainActivity" android:label="Inicio"/>
+
+        <!--TELA DE RECUPERAÇÂO DE SENHA-->
+        <activity android:name=".RecuperarSenhaActivity" android:label=""/>
+
+        <!--TELA DE LOGIN -->
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

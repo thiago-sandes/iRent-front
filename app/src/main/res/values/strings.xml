@@ -46,4 +46,5 @@
     <string name="hint_btn_criar_oferta">Criar Oferta</string>
     <string name="hint_btn_criar_anuncio">Criar Anúncio</string>
     <string name="erro_preco_negativo">Erro! Insira um valor válido!</string>
+    <string name="inicial">Inicial</string>
 </resources>
