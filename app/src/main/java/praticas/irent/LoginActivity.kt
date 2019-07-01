@@ -2,20 +2,15 @@ package praticas.irent
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.indeterminateProgressDialog
-import org.jetbrains.anko.progressDialog
 import org.jetbrains.anko.startActivity
 import praticas.irent.model.GetPeopleResult
-import praticas.irent.model.People
 import praticas.irent.webservice.createUserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.StringBuilder
 
 class LoginActivity : AppCompatActivity() {
 
@@ -31,6 +26,9 @@ class LoginActivity : AppCompatActivity() {
         enterButton.setOnClickListener {
             startActivity<MainActivity>()
 //            entrar()
+        }
+        registerText.setOnClickListener {
+            startActivity<TelaCadastro>()
         }
     }
 

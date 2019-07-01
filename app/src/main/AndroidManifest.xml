@@ -18,6 +18,9 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
+        <!--TELA CADASTRO-->
+        <activity android:name=".TelaCadastro"/>
+
         <!--TELA INICIAL-->
         <activity android:name=".MainActivity" android:label="Inicio"/>
 

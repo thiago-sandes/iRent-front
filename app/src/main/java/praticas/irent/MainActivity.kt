@@ -1,7 +1,7 @@
 package praticas.irent
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -17,16 +17,16 @@ class MainActivity : AppCompatActivity() {
             startActivity<MainActivity>()
         }
 
-        buttonBuscar.setOnClickListener(){
+        buttonBuscar.setOnClickListener {
             startActivity<MainActivity>()
         }
 
-        buttonCriarAnuncio.setOnClickListener(){
+        buttonCriarAnuncio.setOnClickListener {
             startActivity<MainActivity>()
         }
 
-        buttonCriarOferta.setOnClickListener(){
-            startActivity<MainActivity>()
+        buttonCriarOferta.setOnClickListener {
+            startActivity<CadastroOferta>()
         }
     }
 }
