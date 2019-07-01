@@ -20,6 +20,8 @@
 
         <!--TELA CADASTRO-->
         <activity android:name=".TelaCadastro"/>
+        <!--TELA CADASTRO-->
+        <activity android:name=".CadastroOferta"/>
 
         <!--TELA INICIAL-->
         <activity android:name=".MainActivity" android:label="Inicio"/>
