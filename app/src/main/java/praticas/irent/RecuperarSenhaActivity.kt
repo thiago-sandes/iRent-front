@@ -6,11 +6,12 @@ import kotlinx.android.synthetic.main.activity_recuperar_senha.*
 import org.jetbrains.anko.toast
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
-import praticas.irent.model.UserRecuperarSenha
-import praticas.irent.webservice.postRecuperarSenha
+import praticas.irent.webservice.UserWebService
+import praticas.irent.webservice.createUserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class RecuperarSenhaActivity : AppCompatActivity() {
 
@@ -41,20 +42,23 @@ class RecuperarSenhaActivity : AppCompatActivity() {
 
     private fun recuperar(email: String) {
 
-        postRecuperarSenha().recuperarSenha(email)
-            .enqueue(object : Callback<UserRecuperarSenha> {
-                override fun onFailure(call: Call<UserRecuperarSenha>, t: Throwable) {
-                    toast(t.message.toString())
-                    //toast("Email não cadastrado")
+        var req: UserRecuperarSenha = UserRecuperarSenha(email)
+        var service: UserWebService = createUserService()
+        var response: Call<TokenResponseRecuperarSenha>? = service.recuperarSenha(req)
 
-                }
+        response?.enqueue(object : Callback<TokenResponseRecuperarSenha> {
+            override fun onResponse(
+                call: Call<TokenResponseRecuperarSenha>,
+                response: Response<TokenResponseRecuperarSenha>
+            ) {
+                toast(response.body().toString())
+            }
 
-                override fun onResponse(call: Call<UserRecuperarSenha>, response: Response<UserRecuperarSenha>) {
-                    toast(response.body().toString())
-                    //toast("Email enviado")
-                }
-            })
+            override fun onFailure(call: Call<TokenResponseRecuperarSenha>, t: Throwable) {
+                toast(t.message.toString())
+            }
 
+        })
     }
 
 }

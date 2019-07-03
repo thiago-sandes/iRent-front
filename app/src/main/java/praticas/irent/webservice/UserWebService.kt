@@ -4,12 +4,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import praticas.irent.Request
 import praticas.irent.TokenResponse
+import praticas.irent.TokenResponseRecuperarSenha
+import praticas.irent.UserRecuperarSenha
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
+
+const val RECUPERAR_SENHA_PATH = "passwords"
 
 interface UserWebService {
 
@@ -19,6 +23,8 @@ interface UserWebService {
     @POST("users")
     fun userSignUp(@Body request: Request): Call<TokenResponse>
 
+    @POST("passwords")
+    fun recuperarSenha(@Body request: UserRecuperarSenha): Call<TokenResponseRecuperarSenha>
 }
 
 
@@ -41,3 +47,4 @@ fun createUserService() = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .build()
     .create(UserWebService::class.java)
+
