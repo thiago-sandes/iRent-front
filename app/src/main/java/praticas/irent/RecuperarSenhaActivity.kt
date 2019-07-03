@@ -42,20 +42,29 @@ class RecuperarSenhaActivity : AppCompatActivity() {
 
     private fun recuperar(email: String) {
 
-        var req: UserRecuperarSenha = UserRecuperarSenha(email)
-        var service: UserWebService = createUserService()
-        var response: Call<TokenResponseRecuperarSenha>? = service.recuperarSenha(req)
+        val req: UserRecuperarSenha = UserRecuperarSenha(email)
+        val service: UserWebService = createUserService()
+        val response: Call<TokenResponseRecuperarSenha>? = service.recuperarSenha(req)
 
         response?.enqueue(object : Callback<TokenResponseRecuperarSenha> {
             override fun onResponse(
                 call: Call<TokenResponseRecuperarSenha>,
                 response: Response<TokenResponseRecuperarSenha>
             ) {
-                toast(response.body().toString())
+                if (response.body().toString() == "null") {
+                    toast("Email não cadastrado")
+                } else {
+                    toast("Email eviado")
+                    finish()
+                }
+
+                //toast(response.body().toString())
             }
 
             override fun onFailure(call: Call<TokenResponseRecuperarSenha>, t: Throwable) {
-                toast(t.message.toString())
+                //toast(t.message.toString())
+                toast("Ocorreu erro ao enviar email")
+
             }
 
         })
