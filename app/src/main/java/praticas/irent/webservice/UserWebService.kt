@@ -25,7 +25,7 @@ interface UserWebService {
 const val USER_PATH = "people"
 const val USER_ID_PATH = "id"
 
-const val BASE_URL = "https://swapi.co/api/"
+//const val BASE_URL = "https://swapi.co/api/"
 
 fun createOkhttpClient() =  OkHttpClient.Builder()
     .addInterceptor(httpLoggingInterceptor())

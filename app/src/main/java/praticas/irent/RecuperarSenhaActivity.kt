@@ -1,15 +1,16 @@
 package praticas.irent
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_recuperar_senha.*
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
+import praticas.irent.model.UserRecuperarSenha
+import praticas.irent.webservice.postRecuperarSenha
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RecuperarSenhaActivity : AppCompatActivity() {
 
@@ -28,9 +29,8 @@ class RecuperarSenhaActivity : AppCompatActivity() {
         }
 
         buttonRecuperar.setOnClickListener {
-
-            toast("Email enviado")
-            startActivity<LoginActivity>()
+            val email = recuperarSenhaEmailEditText.text.toString()
+            recuperar(email)
         }
     }
 
@@ -38,4 +38,23 @@ class RecuperarSenhaActivity : AppCompatActivity() {
         buttonRecuperar.isEnabled = it
         recuperarSenhaEmailInputLayout.error = if (!it) "Email inválido" else null
     }
+
+    private fun recuperar(email: String) {
+
+        postRecuperarSenha().recuperarSenha(email)
+            .enqueue(object : Callback<UserRecuperarSenha> {
+                override fun onFailure(call: Call<UserRecuperarSenha>, t: Throwable) {
+                    toast(t.message.toString())
+                    //toast("Email não cadastrado")
+
+                }
+
+                override fun onResponse(call: Call<UserRecuperarSenha>, response: Response<UserRecuperarSenha>) {
+                    toast(response.body().toString())
+                    //toast("Email enviado")
+                }
+            })
+
+    }
+
 }
