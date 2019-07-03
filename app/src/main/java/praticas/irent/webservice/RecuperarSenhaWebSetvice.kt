@@ -12,7 +12,7 @@ import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 
-const val BASE_URL = "http://young-lake-11756.herokuapp.com"
+//const val BASE_URL = "http://young-lake-11756.herokuapp.com"
 const val RECUPERAR_SENHA_PATH = "passwords"
 
 interface RecuperarSenhaWebSetvice {

@@ -2,30 +2,27 @@ package praticas.irent.webservice
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import praticas.irent.model.GetPeopleResult
-import praticas.irent.model.People
+import praticas.irent.Request
+import praticas.irent.TokenResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Body
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 interface UserWebService {
 
-    @GET(USER_PATH)
-    fun getUser(): Call<GetPeopleResult>
+    @POST("sessions")
+    fun userLogin(@Body request: Request): Call<TokenResponse>
 
-    @GET("$USER_PATH/{$USER_ID_PATH}")
-
-    fun getUser(@Path(USER_ID_PATH) id: Int): Call<People>
+    @POST("users")
+    fun userSignUp(@Body request: Request): Call<TokenResponse>
 
 }
 
-const val USER_PATH = "people"
-const val USER_ID_PATH = "id"
 
-//const val BASE_URL = "https://swapi.co/api/"
+const val BASE_URL = "https://young-lake-11756.herokuapp.com/"
 
 fun createOkhttpClient() =  OkHttpClient.Builder()
     .addInterceptor(httpLoggingInterceptor())
