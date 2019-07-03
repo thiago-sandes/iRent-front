@@ -1,4 +1,4 @@
-package praticas.irent
+package praticas.irent.model
 
 import com.google.gson.annotations.SerializedName
 

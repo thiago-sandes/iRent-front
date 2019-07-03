@@ -2,10 +2,10 @@ package praticas.irent.webservice
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import praticas.irent.Request
-import praticas.irent.TokenResponse
-import praticas.irent.TokenResponseRecuperarSenha
-import praticas.irent.UserRecuperarSenha
+import praticas.irent.model.Request
+import praticas.irent.model.TokenResponse
+import praticas.irent.model.TokenResponseRecuperarSenha
+import praticas.irent.model.UserRecuperarSenha
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

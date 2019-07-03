@@ -6,6 +6,8 @@ import kotlinx.android.synthetic.main.activity_recuperar_senha.*
 import org.jetbrains.anko.toast
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
+import praticas.irent.model.TokenResponseRecuperarSenha
+import praticas.irent.model.UserRecuperarSenha
 import praticas.irent.webservice.UserWebService
 import praticas.irent.webservice.createUserService
 import retrofit2.Call
