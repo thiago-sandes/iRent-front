@@ -25,6 +25,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity<RecuperarSenhaActivity>()
         }
 
+        registerText.setOnClickListener {
+            startActivity<TelaCadastro>()
+        }
+
         enterButton.setOnClickListener {
             var emailView = findViewById<EditText>(R.id.emailText)
             var senhaView = findViewById<EditText>(R.id.passText)

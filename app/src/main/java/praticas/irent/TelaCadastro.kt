@@ -2,20 +2,16 @@ package praticas.irent
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
 import android.text.TextUtils
-import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.view.*
 import okhttp3.ResponseBody
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
-import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.createUserService
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +19,6 @@ import retrofit2.Response
 
 class TelaCadastro : AppCompatActivity() {
 
-    var service: ApiUsuario? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_cadastro)
@@ -73,13 +68,11 @@ class TelaCadastro : AppCompatActivity() {
     }
 
     private fun cadastrar(username: String, name: String, email: String, password: String, telephone: String, sex: String){
-        var req: RequestUsuario = RequestUsuario(username, name, email, password, telephone, sex)
-        var service : ApiUsuario = createUserService()
-        var response: Call<ResponseBody>? = service?.userCadastro(req)
+        val req = RequestUsuario(username, name, email, password, telephone, sex)
+        val service  = createUserService()
+        val response = service?.userCadastro(req)
 
-        var intent = Intent(this, TelaInicial::class.java)
-
-        var builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
 
         builder.setTitle("Cadastro de Usuário")
         builder.setMessage("Cadastro realizado com sucesso!")

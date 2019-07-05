@@ -1,7 +1,9 @@
 package praticas.irent.webservice
 
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import praticas.irent.RequestUsuario
 import praticas.irent.model.Request
 import praticas.irent.model.TokenResponse
 import praticas.irent.model.TokenResponseRecuperarSenha
@@ -25,6 +27,9 @@ interface UserWebService {
 
     @POST("passwords")
     fun recuperarSenha(@Body request: UserRecuperarSenha): Call<TokenResponseRecuperarSenha>
+
+    @POST("users")
+    fun userCadastro(@Body request: RequestUsuario): Call<ResponseBody>
 }
 
 
