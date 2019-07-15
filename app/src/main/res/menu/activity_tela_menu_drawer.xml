@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/menu_home"/>
+        <item
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Perfil"/>
+        <item
+                android:id="@+id/nav_buscar"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Buscar"/>
+        <item
+                android:id="@+id/nav_minhas_ofertas"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Minhas Ofertas"/>
+        <item
+                android:id="@+id/nav_criar_oferta"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Criar Oferta"/>
+        <item
+                android:id="@+id/nav_criar_anuncio"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Criar Anúncio"/>
+        <item
+                android:id="@+id/nav_meus_anuncios"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Meus Anúncios"/>
+
+    </group>
+
+
+    <item android:title="Mais">
+        <menu>
+            <item
+                    android:id="@+id/nav_ajuda"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Ajuda"/>
+            <item
+                    android:id="@+id/nav_sobre"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="Sobre"/>
+
+        </menu>
+    </item>
+
+
+</menu>
