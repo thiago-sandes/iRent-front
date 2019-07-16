@@ -1,6 +1,5 @@
 package praticas.irent
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.RadioGroup
@@ -12,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_tela_cadastro.view.*
 import okhttp3.ResponseBody
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
+import praticas.irent.model.RequestUsuario
 import praticas.irent.webservice.createUserService
 import retrofit2.Call
 import retrofit2.Callback

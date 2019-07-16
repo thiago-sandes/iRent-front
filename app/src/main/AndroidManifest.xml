@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="praticas.irent">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <dist:module dist:instant="true"/>
 
@@ -18,18 +18,27 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <!--TELA CADASTRO-->
+        <!-- COMENTÁRIOS -->
+        <activity
+                android:name=".exibirOferta.ComentariosActivity"
+                android:label="Comentários"/>
+        <!-- TELA EXIBIR OFERTA -->
+        <activity
+                android:name=".exibirOferta.ExibirOfertaActivity"
+                android:label="Oferta"/>
+        <!-- TELA CADASTRO USUÁRIO-->
         <activity android:name=".TelaCadastro"/>
-        <!--TELA CADASTRO-->
+        <!-- TELA CADASTRO OFERTA -->
         <activity android:name=".CadastroOferta"/>
-
-        <!--TELA INICIAL-->
-        <activity android:name=".MainActivity" android:label="Inicio"/>
-
-        <!--TELA DE RECUPERAÇÂO DE SENHA-->
-        <activity android:name=".RecuperarSenhaActivity" android:label=""/>
-
-        <!--TELA DE LOGIN -->
+        <!-- TELA MAIN -->
+        <activity
+                android:name=".MainActivity"
+                android:label="Inicio"/>
+        <!-- TELA RECUPERAR SENHA -->
+        <activity
+                android:name=".RecuperarSenhaActivity"
+                android:label=""/>
+        <!-- TELA LOGIN -->
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

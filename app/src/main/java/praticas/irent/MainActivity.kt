@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
+import praticas.irent.exibirOferta.ExibirOfertaActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonBuscar.setOnClickListener {
-            startActivity<MainActivity>()
+            startActivity<ExibirOfertaActivity>()
         }
 
         buttonCriarAnuncio.setOnClickListener {

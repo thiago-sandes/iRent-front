@@ -3,7 +3,7 @@ package praticas.irent.webservice
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
-import praticas.irent.RequestUsuario
+import praticas.irent.model.RequestUsuario
 import praticas.irent.model.Request
 import praticas.irent.model.TokenResponse
 import praticas.irent.model.TokenResponseRecuperarSenha

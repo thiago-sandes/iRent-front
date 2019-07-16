@@ -47,4 +47,15 @@
     <string name="hint_btn_criar_anuncio">Criar Anúncio</string>
     <string name="erro_preco_negativo">Erro! Insira um valor válido!</string>
     <string name="inicial">Inicial</string>
+    <string name="nome_usu_rio">Nome Usuário</string>
+    <string name="titulo">Título:</string>
+    <string name="imagem_do_perfil_do_usuario">Imagem do perfil do usuário</string>
+    <string name="telefone">Telefone:</string>
+    <string name="Email">Email:</string>
+    <string name="nota">Nota:</string>
+    <string name="descricao">Descrição:</string>
+    <string name="comentarios">Comentários:</string>
+    <string name="comentario_do_usuario">comentário do usuário</string>
+    <string name="mapa">Mapa</string>
+    <string name="fotos">Fotos</string>
 </resources>

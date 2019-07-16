@@ -1,4 +1,4 @@
-package praticas.irent
+package praticas.irent.model
 
 class RequestUsuario(
     val username: String,

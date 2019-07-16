@@ -9,6 +9,10 @@ fun String.isEmail(): Boolean {
     return Pattern.matches("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}\$", this.toLowerCase())
 }
 
+fun String.isComentario(): Boolean{
+    return this.isNotBlank()
+}
+
 fun EditText.doAfterTextChanged(onChanged: (String) -> Unit) {
 
     addTextChangedListener(object : TextWatcher {
