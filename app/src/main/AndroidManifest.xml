@@ -17,28 +17,29 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-
-        <!-- COMENTÁRIOS -->
+        <activity android:name=".filtros.MaisActivity">
+        </activity>
+        <activity android:name=".filtros.PrecoActivity">
+        </activity>
+        <activity android:name=".filtros.LocalizacaoActivity">
+        </activity> <!-- FILTROS -->
+        <activity
+                android:name=".filtros.FiltrosActivity"
+                android:label="Filtros"/> <!-- COMENTÁRIOS -->
         <activity
                 android:name=".exibirOferta.ComentariosActivity"
-                android:label="Comentários"/>
-        <!-- TELA EXIBIR OFERTA -->
+                android:label="Comentários"/> <!-- TELA EXIBIR OFERTA -->
         <activity
                 android:name=".exibirOferta.ExibirOfertaActivity"
-                android:label="Oferta"/>
-        <!-- TELA CADASTRO USUÁRIO-->
-        <activity android:name=".TelaCadastro"/>
-        <!-- TELA CADASTRO OFERTA -->
-        <activity android:name=".CadastroOferta"/>
-        <!-- TELA MAIN -->
+                android:label="Oferta"/> <!-- TELA CADASTRO USUÁRIO -->
+        <activity android:name=".TelaCadastro"/> <!-- TELA CADASTRO OFERTA -->
+        <activity android:name=".CadastroOferta"/> <!-- TELA MAIN -->
         <activity
                 android:name=".MainActivity"
-                android:label="Inicio"/>
-        <!-- TELA RECUPERAR SENHA -->
+                android:label="Inicio"/> <!-- TELA RECUPERAR SENHA -->
         <activity
                 android:name=".RecuperarSenhaActivity"
-                android:label=""/>
-        <!-- TELA LOGIN -->
+                android:label=""/> <!-- TELA LOGIN -->
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -8,6 +8,7 @@ import org.jetbrains.anko.toast
 import praticas.irent.R
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isComentario
+import praticas.irent.filtros.FiltrosActivity
 
 class ExibirOfertaActivity : AppCompatActivity() {
 
@@ -23,6 +24,7 @@ class ExibirOfertaActivity : AppCompatActivity() {
         exibirOfertaButtonPublicar.setOnClickListener {
             val comentario = exibirOfertaEditTextAddComentario.text.toString()
             publicarComentario(comentario)
+            startActivity<FiltrosActivity>()
         }
 
         exibirOfertaButtonMaisComentarios.setOnClickListener {

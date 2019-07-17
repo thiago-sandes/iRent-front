@@ -58,4 +58,13 @@
     <string name="comentario_do_usuario">comentário do usuário</string>
     <string name="mapa">Mapa</string>
     <string name="fotos">Fotos</string>
+    <string name="mais">Mais</string>
+    <string name="wifi">Wifi</string>
+    <string name="localizacao">Localização</string>
+    <string name="preco">Preço</string>
+    <string name="animais">Animais</string>
+    <string name="quantidade_pessoas">Quantidade \n Pessoas</string>
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+    <string name="estudante">Estudante</string>
 </resources>
