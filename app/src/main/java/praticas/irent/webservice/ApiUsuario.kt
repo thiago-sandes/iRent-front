@@ -1,8 +1,9 @@
 package praticas.irent.webservice
 
 import okhttp3.ResponseBody
-import praticas.irent.RequestOferta
-import praticas.irent.RequestUsuario
+import praticas.irent.model.RequestOferta
+import praticas.irent.model.RequestUsuario
+import praticas.irent.model.TokenResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,11 +13,14 @@ import retrofit2.http.POST
 
 interface ApiUsuario {
 
+    @GET("sessions")
+    fun verificaLogado(@Body request: RequestUsuario): Call<TokenResponse>
+
     @POST("users")
-    fun userCadastro(@Body request: RequestUsuario): Call<ResponseBody>
+    fun userCadastro(@Body request: RequestUsuario): Call<TokenResponse>
 
     @POST("ofertas")
-    fun ofertaCadastro(@Body request: RequestOferta): Call<ResponseBody>
+    fun ofertaCadastro(@Body request: RequestOferta): Call<TokenResponse>
 
 }
 

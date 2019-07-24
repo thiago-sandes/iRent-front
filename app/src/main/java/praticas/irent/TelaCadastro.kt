@@ -3,32 +3,26 @@ package praticas.irent
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.storage.StorageManager
 import android.provider.MediaStore
-import android.text.InputType
 import android.text.TextUtils
-import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_cadastro_oferta.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.view.*
 import okhttp3.ResponseBody
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
+import praticas.irent.model.RequestUsuario
+import praticas.irent.model.TokenResponse
 import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.criarServicoUsuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class TelaCadastro : AppCompatActivity() {
 
@@ -194,9 +188,10 @@ class TelaCadastro : AppCompatActivity() {
     }
 
     private fun cadastrar(username: String, name: String, email: String, password: String, telephone: String, sex: String, foto:String){
-        var req: RequestUsuario = RequestUsuario(username, name, email, password, telephone, sex)
+        var req: RequestUsuario =
+            RequestUsuario(username, name, email, password, telephone, sex)
         var service : ApiUsuario = criarServicoUsuario()
-        var response: Call<ResponseBody>? = service?.userCadastro(req)
+        var response: Call<TokenResponse>? = service?.userCadastro(req)
 
         var intent = Intent(this, TelaInicial::class.java)
 
@@ -210,16 +205,16 @@ class TelaCadastro : AppCompatActivity() {
 
         val alerta = builder.create()
 
-        response?.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if(!response.isSuccessful){
-                    Toast.makeText(getApplicationContext(), "ERRO: "+response.code() , Toast.LENGTH_SHORT).show()
+        response?.enqueue(object : Callback<TokenResponse> {
+            override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
+                if(!response.isSuccessful || response.body().toString() == username){
+                    Toast.makeText(getApplicationContext(), "Usuário já cadastrado" , Toast.LENGTH_SHORT).show()
                 }else{
                     //uploadImagemRetrofit()
                     alerta.show()
                 }
             }
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
                 Toast.makeText(getApplicationContext(), "Erro interno no servidor." , Toast.LENGTH_SHORT).show()
             }
         })

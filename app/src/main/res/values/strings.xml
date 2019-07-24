@@ -50,4 +50,5 @@
     <string name="hint_btn_selecionar_foto">Selecionar foto</string>
     <string name="hint_edit_endereco">Endereço</string>
     <string name="hint_id_ja_cadastro">Já possuo cadastro!</string>
+    <string name="hint_telefone_contato">Telefone p/ contato</string>
 </resources>
