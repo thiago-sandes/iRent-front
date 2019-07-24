@@ -46,4 +46,8 @@
     <string name="hint_btn_criar_oferta">Criar Oferta</string>
     <string name="hint_btn_criar_anuncio">Criar Anúncio</string>
     <string name="erro_preco_negativo">Erro! Insira um valor válido!</string>
+    <string name="hint_view_termos">Ver termos de aceitação</string>
+    <string name="hint_btn_selecionar_foto">Selecionar foto</string>
+    <string name="hint_edit_endereco">Endereço</string>
+    <string name="hint_id_ja_cadastro">Já possuo cadastro!</string>
 </resources>

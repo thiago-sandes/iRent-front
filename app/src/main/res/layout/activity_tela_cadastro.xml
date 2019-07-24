@@ -5,7 +5,7 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:orientation="vertical"
-                                                   android:background="#FAFAFA">
+                                                   android:background="#FFFFFF">
 
     <ScrollView
             android:layout_width="match_parent"
@@ -17,41 +17,33 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <TextView
-                    android:text="@string/hint_view_cadastro"
+            <Button
+                    android:text="@string/hint_btn_selecionar_foto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/view_cadastro"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="40dp"
-                    android:textSize="30sp"
+                    android:background="@drawable/selecionar_foto"
+                    android:id="@+id/id_selecionar_foto"
                     android:layout_gravity="center_horizontal"
-                    android:hint="@string/hint_view_cadastro"/>
+                    android:padding="10dp"
+                    android:hint="@string/hint_btn_selecionar_foto"
+                    android:height="150dp"
+                    android:width="150dp"
+                    android:layout_marginTop="40dp"/>
 
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/voltar"
-                    android:id="@+id/img_view_voltar"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="-35dp"/>
-
-            <View
-                    android:id="@+id/divider2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?android:attr/listDivider"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="30dp"
-                    />
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="150dp"
+                    app:civ_border_width="4dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="-150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/id_circle_view"/>
 
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="25dp"
                     android:id="@+id/edit_nome"
                     android:hint="@string/hint_edit_nome">
 
@@ -128,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/view_sexo"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="20dp"
                     android:hint="@string/hint_view_sexo"/>
 
             <RadioGroup
@@ -156,6 +148,7 @@
                         android:hint="@string/hint_radio_feminino"
                         android:layout_marginLeft="180dp"
                         android:layout_marginTop="-32dp"/>
+
             </RadioGroup>
 
             <CheckBox
@@ -164,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="40dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="8dp"
                     android:hint="@string/hint_check_termos"/>
@@ -178,7 +171,18 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:enabled="false"/>
+
+            <TextView
+                    android:text="@string/hint_id_ja_cadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/id_ja_tenho_cadastro"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/hint_id_ja_cadastro"/>
 
         </LinearLayout>
     </ScrollView>
