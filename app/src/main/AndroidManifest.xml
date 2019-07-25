@@ -14,11 +14,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".TelaInicial">
+        <activity android:name=".TelaInicialActivity">
         </activity>
-        <activity android:name=".CadastroOferta">
+        <activity android:name=".CadastroOfertaActivity">
         </activity>
-        <activity android:name=".TelaCadastro">
+        <activity android:name=".CadastroUsuarioActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

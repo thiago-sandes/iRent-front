@@ -12,14 +12,13 @@ import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_cadastro_oferta.*
 import okhttp3.ResponseBody
 import praticas.irent.model.RequestOferta
-import praticas.irent.model.TokenResponse
 import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.criarServicoUsuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CadastroOferta : AppCompatActivity() {
+class CadastroOfertaActivity : AppCompatActivity() {
 
     var service: ApiUsuario? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,12 +130,11 @@ class CadastroOferta : AppCompatActivity() {
 
     // Função para cadastrar oferta
     private fun cadastrarOferta(titulo: String, descricao: String, endereco: String, preco: String, restricoes: String){
-        var req: RequestOferta =
-            RequestOferta(titulo, descricao, endereco, preco, restricoes)
+        var req: RequestOferta = RequestOferta(titulo, descricao, endereco, preco, restricoes)
         var service : ApiUsuario = criarServicoUsuario()
-        var response: Call<TokenResponse>? = service?.ofertaCadastro(req)
+        var response: Call<ResponseBody>? = service?.ofertaCadastro(req)
 
-        var intent = Intent(this, TelaInicial::class.java)
+        var intent = Intent(this, TelaInicialActivity::class.java)
 
         var builder = AlertDialog.Builder(this)
 
@@ -149,15 +147,16 @@ class CadastroOferta : AppCompatActivity() {
         val alerta = builder.create()
 
         // Response
-        response?.enqueue(object : Callback<TokenResponse> {
-            override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
-                if(!response.isSuccessful || response.body().toString() == titulo){
+        response?.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if(!response.isSuccessful){
                     Toast.makeText(getApplicationContext(), "Oferta já cadastrada" , Toast.LENGTH_SHORT).show()
                 }else{
+                    //uploadImagemRetrofit()
                     alerta.show()
                 }
             }
-            override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(getApplicationContext(), "Erro interno no servidor." , Toast.LENGTH_SHORT).show()
             }
         })

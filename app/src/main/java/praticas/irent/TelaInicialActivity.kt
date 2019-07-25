@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class TelaInicial : AppCompatActivity() {
+class TelaInicialActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class TelaInicial : AppCompatActivity() {
     }
 
     fun chamar_criar_oferta(view : View){
-        val intent_ofertar = Intent(this,CadastroOferta::class.java);
+        val intent_ofertar = Intent(this,CadastroOfertaActivity::class.java);
 
         startActivity(intent_ofertar);
     }

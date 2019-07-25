@@ -11,25 +11,24 @@ import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_tela_cadastro.*
-import kotlinx.android.synthetic.main.activity_tela_cadastro.view.*
+import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
+import kotlinx.android.synthetic.main.activity_cadastro_usuario.view.*
 import okhttp3.ResponseBody
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
 import praticas.irent.model.RequestUsuario
-import praticas.irent.model.TokenResponse
 import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.criarServicoUsuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TelaCadastro : AppCompatActivity() {
+class CadastroUsuarioActivity : AppCompatActivity() {
 
     var service: ApiUsuario? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tela_cadastro)
+        setContentView(R.layout.activity_cadastro_usuario)
 
         // Verificar se o email digitado é válido
         edit_email.doAfterTextChanged {
@@ -38,7 +37,7 @@ class TelaCadastro : AppCompatActivity() {
 
         // Já possui cadastro e é redirecionado para tela de login
         id_ja_tenho_cadastro.setOnClickListener {
-            var intent_cadastrado = Intent(this,TelaInicial::class.java)
+            var intent_cadastrado = Intent(this,TelaInicialActivity::class.java)
             startActivity(intent_cadastrado)
         }
 
@@ -50,7 +49,7 @@ class TelaCadastro : AppCompatActivity() {
                     // Permissão negada
                     val permissao = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     // Mostra popup requirindo a permissão
-                    requestPermissions(permissao, TelaCadastro.PERMISSION_CODE)
+                    requestPermissions(permissao, CadastroUsuarioActivity.PERMISSION_CODE)
                 }else{
                     pegaImagemGaleria()
                 }
@@ -91,7 +90,7 @@ class TelaCadastro : AppCompatActivity() {
         */
 
         /* Botão para voltar a tela de login
-        val intent_img_voltar  = Intent(this, TelaInicial::class.java)
+        val intent_img_voltar  = Intent(this, TelaInicialActivity::class.java)
         val imagem_voltar : ImageView = findViewById(R.id.img_view_voltar)
 
         imagem_voltar.setOnClickListener { startActivity(intent_img_voltar) }
@@ -108,7 +107,7 @@ class TelaCadastro : AppCompatActivity() {
             var grupo_sexo = findViewById(R.id.radio_group_sexo) as RadioGroup
             var foto = findViewById(R.id.id_selecionar_foto) as Button
 
-            val intent_tela_inicial = Intent(this, TelaInicial::class.java)
+            val intent_tela_inicial = Intent(this, TelaInicialActivity::class.java)
 
             var sexo = ""
 
@@ -174,7 +173,7 @@ class TelaCadastro : AppCompatActivity() {
     // Se a resposta da activity foi "OK", exiba a imagem selecionada na galeria no ImageView
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
-        if(resultCode == Activity.RESULT_OK && requestCode == TelaCadastro.IMAGE_PICK_CODE && data != null){
+        if(resultCode == Activity.RESULT_OK && requestCode == CadastroUsuarioActivity.IMAGE_PICK_CODE && data != null){
             UriFotoSelecionada = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, UriFotoSelecionada)
 
@@ -191,9 +190,9 @@ class TelaCadastro : AppCompatActivity() {
         var req: RequestUsuario =
             RequestUsuario(username, name, email, password, telephone, sex)
         var service : ApiUsuario = criarServicoUsuario()
-        var response: Call<TokenResponse>? = service?.userCadastro(req)
+        var response: Call<ResponseBody>? = service?.userCadastro(req)
 
-        var intent = Intent(this, TelaInicial::class.java)
+        var intent = Intent(this, TelaInicialActivity::class.java)
 
         var builder = AlertDialog.Builder(this)
 
@@ -205,8 +204,8 @@ class TelaCadastro : AppCompatActivity() {
 
         val alerta = builder.create()
 
-        response?.enqueue(object : Callback<TokenResponse> {
-            override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
+        response?.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(!response.isSuccessful || response.body().toString() == username){
                     Toast.makeText(getApplicationContext(), "Usuário já cadastrado" , Toast.LENGTH_SHORT).show()
                 }else{
@@ -214,7 +213,7 @@ class TelaCadastro : AppCompatActivity() {
                     alerta.show()
                 }
             }
-            override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Toast.makeText(getApplicationContext(), "Erro interno no servidor." , Toast.LENGTH_SHORT).show()
             }
         })
