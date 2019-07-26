@@ -8,15 +8,20 @@ import praticas.irent.model.TokenResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
+import okhttp3.RequestBody
+import praticas.irent.model.RequestImages
+import retrofit2.http.*
+
 
 interface ApiUsuario {
 
     @GET("sessions")
     fun verificaLogado(@Body request: RequestUsuario): Call<ResponseBody>
+
+    @Multipart
+    @POST("oferta/"+10+"images")
+    fun uploadImages(@Body request: RequestImages): Call<ResponseBody>
 
     @POST("users")
     fun userCadastro(@Body request: RequestUsuario): Call<ResponseBody>
@@ -28,7 +33,7 @@ interface ApiUsuario {
 
 const val BASE_URL_USER = "https://young-lake-11756.herokuapp.com/"
 
-fun createOkhttpClient() =  OkHttpClient.Builder()
+fun createOkhttpClient1() =  OkHttpClient.Builder()
     //.addInterceptor(httpLoggingInterceptor())
     .connectTimeout(30, TimeUnit.SECONDS)
     .readTimeout(30, TimeUnit.SECONDS)
@@ -42,7 +47,7 @@ fun createOkhttpClient() =  OkHttpClient.Builder()
 
 fun criarServicoUsuario() = Retrofit.Builder()
     .baseUrl(BASE_URL_USER)
-    .client(createOkhttpClient())
+    .client(createOkhttpClient1())
     .addConverterFactory(GsonConverterFactory.create())
     .build()
     .create(ApiUsuario::class.java)

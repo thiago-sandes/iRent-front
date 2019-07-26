@@ -92,55 +92,22 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/hint_telefone_contato"
-                    android:text="@string/hint_telefone_contato"
-                    android:textColor="#949393"/>
+                    android:textColor="#000000"/>
 
-            <TextView
-                    android:text="@string/hint_view_restricoes"
+            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/view_restricoes"
-                    android:layout_marginStart="16dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/edit_restricoes"
                     android:layout_marginTop="20dp"
-                    android:hint="@string/hint_view_restricoes"
+                    android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    />
+                    android:hint="@string/hint_view_restricoes">
 
-            <CheckBox
-                    android:text="@string/hint_check_animal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check_animal"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="24dp"
-                    android:hint="@string/hint_check_animal"/>
-
-            <CheckBox
-                    android:text="@string/hint_check_meninos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check_meninos"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginStart="40dp"
-                    android:hint="@string/hint_check_meninos"/>
-
-            <CheckBox
-                    android:text="@string/hint_check_meninas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check_meninas"
-                    android:layout_marginTop="-88dp"
-                    android:layout_marginStart="180dp"
-                    android:hint="@string/hint_check_meninas"/>
-
-            <CheckBox
-                    android:text="@string/hint_check_som_alto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check_som_alto"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginStart="180dp"
-                    android:hint="@string/hint_check_som_alto"/>
+                <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/input_restricoes"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                     android:text="@string/hint_btn_ofertar"

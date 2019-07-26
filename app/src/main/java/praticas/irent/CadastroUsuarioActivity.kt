@@ -62,7 +62,6 @@ class CadastroUsuarioActivity : AppCompatActivity() {
         // Variáveis para termos de aceitação
         val termos : CheckBox = findViewById(R.id.checkBox)
         var cadastrar : Button = findViewById(R.id.btn_cadastrar)
-        //val ver_termos : TextView = findViewById(R.id.id_view_termos)
 
         // Habilitar e desabilitar botão ao clicar no check box
         termos.setOnCheckedChangeListener { termos, isChecked ->
@@ -73,28 +72,6 @@ class CadastroUsuarioActivity : AppCompatActivity() {
             }
         }
 
-        /* Mostrar alert com os termos de aceitação ao clicar no link
-        val builder = AlertDialog.Builder(this)
-
-        builder.setTitle("Termos de Aceitação")
-        builder.setMessage("Os termos são ....")
-        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-            Toast.makeText(applicationContext, android.R.string.yes, Toast.LENGTH_SHORT).show()
-        }
-
-        val alert = builder.create()
-
-        ver_termos.setOnClickListener { ver_termos ->
-            alert.show()
-        }
-        */
-
-        /* Botão para voltar a tela de login
-        val intent_img_voltar  = Intent(this, TelaInicialActivity::class.java)
-        val imagem_voltar : ImageView = findViewById(R.id.img_view_voltar)
-
-        imagem_voltar.setOnClickListener { startActivity(intent_img_voltar) }
-        */
 
         // Ao clicar no botão cadastrar irei fazer...
         cadastrar.setOnClickListener {
@@ -192,7 +169,7 @@ class CadastroUsuarioActivity : AppCompatActivity() {
         var service : ApiUsuario = criarServicoUsuario()
         var response: Call<ResponseBody>? = service?.userCadastro(req)
 
-        var intent = Intent(this, TelaInicialActivity::class.java)
+        var intent = Intent(this, MainActivity::class.java)
 
         var builder = AlertDialog.Builder(this)
 

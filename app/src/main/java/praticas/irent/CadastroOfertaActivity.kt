@@ -3,14 +3,18 @@ package praticas.irent
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_cadastro_oferta.*
+import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
 import okhttp3.ResponseBody
+import praticas.irent.model.RequestImages
 import praticas.irent.model.RequestOferta
 import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.criarServicoUsuario
@@ -20,7 +24,6 @@ import retrofit2.Response
 
 class CadastroOfertaActivity : AppCompatActivity() {
 
-    var service: ApiUsuario? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_oferta)
@@ -33,18 +36,9 @@ class CadastroOfertaActivity : AppCompatActivity() {
             var titulo_oferta : String = input_titulo.editableText.toString()
             var descricao : String = edit_descricao.editableText.toString()
             var preco : String = edit_preco.editableText.toString()
-            var endereco : String = input_endereco.editableText.toString()
-            var restricoes : String = ""
-            //var foto : ImageView = findViewById(R.id.id_imgView_oferta)
-
-            if(check_animal.isChecked)
-                restricoes = "Animal"
-            if(check_meninas.isChecked)
-                restricoes = "Meninas"
-            if(check_meninos.isChecked)
-                restricoes = "Meninos"
-            if(check_som_alto.isChecked)
-                restricoes = "Som Alto"
+            var telefone : String = edit_telefone_contato.editableText.toString()
+            var restricao : String = input_restricoes.editableText.toString()
+            var endereco_id = null
 
             val builder = AlertDialog.Builder(this);
 
@@ -61,14 +55,14 @@ class CadastroOfertaActivity : AppCompatActivity() {
                 edit_titulo_oferta.error = (getString(R.string.erro_campo_obrigatorio))
             }else if(TextUtils.isEmpty(descricao)){
                 edit_descricao.error = (getString(R.string.erro_campo_obrigatorio))
+            }else if(TextUtils.isEmpty(telefone)){
+                edit_telefone_contato.error = (getString(R.string.erro_campo_obrigatorio))
             }else if(TextUtils.isEmpty(preco)){
                 edit_preco.error = (getString(R.string.erro_campo_obrigatorio))
-            }else if(TextUtils.isEmpty(endereco)){
-                id_endereco.error = ("Campo obrigatório!")
             }else if(preco.toDouble() <= 0){
                 edit_preco.error = (getString(R.string.erro_preco_negativo))
             }else{
-                cadastrarOferta(titulo_oferta,descricao,endereco,preco,restricoes)
+                cadastrarOferta(1,endereco_id,titulo_oferta,telefone,descricao,preco,restricao)
             }
         }
 
@@ -121,16 +115,21 @@ class CadastroOfertaActivity : AppCompatActivity() {
         }
     }
 
+    var UriFotoSelecionada : Uri? = null
     // Se a resposta da activity foi "OK", exiba a imagem selecionada na galeria no ImageView
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
-            id_imgView_oferta.setImageURI(data?.data)
+        if(resultCode == Activity.RESULT_OK && requestCode == CadastroOfertaActivity.IMAGE_PICK_CODE && data != null){
+            UriFotoSelecionada = data.data
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, UriFotoSelecionada)
+
+            id_imgView_oferta.setImageBitmap(bitmap)
         }
     }
 
     // Função para cadastrar oferta
-    private fun cadastrarOferta(titulo: String, descricao: String, endereco: String, preco: String, restricoes: String){
-        var req: RequestOferta = RequestOferta(titulo, descricao, endereco, preco, restricoes)
+    private fun cadastrarOferta(user_id: Int,endereco_id: Int?,titulo: String,telefone: String,descricao: String,preco: String,
+                                restricao: String){
+        var req: RequestOferta = RequestOferta(user_id,endereco_id,titulo,telefone,descricao,preco,restricao)
         var service : ApiUsuario = criarServicoUsuario()
         var response: Call<ResponseBody>? = service?.ofertaCadastro(req)
 
@@ -150,9 +149,8 @@ class CadastroOfertaActivity : AppCompatActivity() {
         response?.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(!response.isSuccessful){
-                    Toast.makeText(getApplicationContext(), "Oferta já cadastrada" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(getApplicationContext(), "ERRO: "+response.code() , Toast.LENGTH_SHORT).show()
                 }else{
-                    //uploadImagemRetrofit()
                     alerta.show()
                 }
             }

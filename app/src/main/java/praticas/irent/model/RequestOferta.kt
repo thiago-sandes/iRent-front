@@ -1,10 +1,11 @@
 package praticas.irent.model
 
 class RequestOferta (
+    val user_id: Int,
+    val endereco_id : Int? = null,
     val titulo : String,
+    val telefone: String,
     val descricao : String,
-    val endereco : String,
     val preco : String,
-    val restricoes : String
-    //val foto : String
+    val restricao : String
 )

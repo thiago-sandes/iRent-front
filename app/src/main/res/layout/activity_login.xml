@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+                android:text="iRent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/logoText"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                style="bold"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:textColor="#000000"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:src="@drawable/logo"
+                android:id="@+id/imageViewMenu"
+                android:layout_marginTop="8dp"/>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/emailText"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Seu e-mail"
+                android:drawablePadding="16dp"
+                android:layout_marginTop="32dp"
+                android:drawableStart="@drawable/ic_action_email"/>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/passText"
+                android:drawablePadding="16dp"
+                android:hint="Sua senha"
+                android:layout_marginTop="30dp"
+                android:drawableStart="@drawable/ic_action_password"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"/>
+
+        <Button
+                android:layout_gravity="center"
+                android:id="@+id/enterButton"
+                android:text="ENTRAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="#708090"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:onClick="entrar"/>
+
+        <LinearLayout
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <Button
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Recuperar senha"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/retrieveText"/>
+
+            <Button
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Cadastrar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/registerText"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
