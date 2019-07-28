@@ -12,16 +12,14 @@ import java.util.concurrent.TimeUnit
 import okhttp3.RequestBody
 import praticas.irent.model.RequestImages
 import retrofit2.http.*
-
+import retrofit2.http.POST
+import retrofit2.http.Multipart
+import okhttp3.MultipartBody
 
 interface ApiUsuario {
 
-    @GET("sessions")
-    fun verificaLogado(@Body request: RequestUsuario): Call<ResponseBody>
-
-    @Multipart
-    @POST("oferta/"+10+"images")
-    fun uploadImages(@Body request: RequestImages): Call<ResponseBody>
+    @POST("oferta/10/images")
+    fun upload(@Body request: RequestImages): Call<ResponseBody>
 
     @POST("users")
     fun userCadastro(@Body request: RequestUsuario): Call<ResponseBody>

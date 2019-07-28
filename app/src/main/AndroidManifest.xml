@@ -3,8 +3,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:dist="http://schemas.android.com/apk/distribution"
         package="praticas.irent">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <dist:module dist:instant="true"/>
 
     <application
@@ -14,6 +17,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ImagemOfertaActivity">
+        </activity>
         <activity android:name=".TelaInicialActivity">
         </activity>
         <activity android:name=".CadastroOfertaActivity">

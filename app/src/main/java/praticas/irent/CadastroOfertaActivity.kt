@@ -10,17 +10,24 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toFile
 import kotlinx.android.synthetic.main.activity_cadastro_oferta.*
-import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
+import okhttp3.MediaType
 import okhttp3.ResponseBody
-import praticas.irent.model.RequestImages
 import praticas.irent.model.RequestOferta
 import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.criarServicoUsuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import okhttp3.RequestBody
+import okhttp3.MultipartBody
+import okhttp3.internal.io.FileSystem
+import praticas.irent.model.RequestImages
+import java.io.File
+
 
 class CadastroOfertaActivity : AppCompatActivity() {
 
@@ -30,6 +37,12 @@ class CadastroOfertaActivity : AppCompatActivity() {
 
         // setOnClickListener parâmetros:
             // (<qual o contexto da aplicação>, <o texto a ser exibido>, <tamanho do texto>)
+
+        // Botão para chamar a tela de anexo de foto(s)
+        anexar_foto.setOnClickListener {
+            val intent_imagem_oferta = Intent(this,ImagemOfertaActivity::class.java)
+            startActivity(intent_imagem_oferta)
+        }
 
         // Botão para cadastrar oferta
         btn_ofertar.setOnClickListener {
@@ -64,65 +77,6 @@ class CadastroOfertaActivity : AppCompatActivity() {
             }else{
                 cadastrarOferta(1,endereco_id,titulo_oferta,telefone,descricao,preco,restricao)
             }
-        }
-
-        // Image View da oferta
-        id_imgView_oferta.setOnClickListener {
-            // Verificando a permissão
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
-                    // Permissão negada
-                    val permissao = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                    // Mostra popup requirindo a permissão
-                    requestPermissions(permissao, PERMISSION_CODE)
-                }else{
-                    pegaImagemGaleria()
-                }
-            }else{
-                // SO é <= Marshmallow
-                pegaImagemGaleria()
-            }
-        }
-    }
-
-    // Função para pegar selecionar imagem da galeria
-    private fun pegaImagemGaleria() {
-        // Intent para pegar imagem
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
-    }
-
-    companion object {
-        // Códio para pegar a imagem
-        private val IMAGE_PICK_CODE = 1000;
-        // Código da permissão
-        private val PERMISSION_CODE = 1001;
-    }
-
-    // Exibindo permissão e verificando se a mesma foi aceita ou negada pelo usuário
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode){
-            PERMISSION_CODE -> {
-                if(grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    // Aceitou a permissão
-                    pegaImagemGaleria()
-                }else{
-                    // Permissão negada
-                    Toast.makeText(this, "Permissão negada", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-    var UriFotoSelecionada : Uri? = null
-    // Se a resposta da activity foi "OK", exiba a imagem selecionada na galeria no ImageView
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(resultCode == Activity.RESULT_OK && requestCode == CadastroOfertaActivity.IMAGE_PICK_CODE && data != null){
-            UriFotoSelecionada = data.data
-            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, UriFotoSelecionada)
-
-            id_imgView_oferta.setImageBitmap(bitmap)
         }
     }
 

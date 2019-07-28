@@ -17,6 +17,7 @@ import okhttp3.ResponseBody
 import praticas.irent.extension.doAfterTextChanged
 import praticas.irent.extension.isEmail
 import praticas.irent.model.RequestUsuario
+import praticas.irent.model.TokenResponse
 import praticas.irent.webservice.ApiUsuario
 import praticas.irent.webservice.criarServicoUsuario
 import retrofit2.Call
@@ -36,8 +37,8 @@ class CadastroUsuarioActivity : AppCompatActivity() {
         }
 
         // Já possui cadastro e é redirecionado para tela de login
-        id_ja_tenho_cadastro.setOnClickListener {
-            var intent_cadastrado = Intent(this,TelaInicialActivity::class.java)
+        btn_cadastrado.setOnClickListener {
+            val intent_cadastrado = Intent(this,TelaInicialActivity::class.java)
             startActivity(intent_cadastrado)
         }
 
